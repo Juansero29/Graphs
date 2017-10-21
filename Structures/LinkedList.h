@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#ifndef DEF_BOOL
-#include "bool.h"
-#endif
+#include <stdbool.h>
 
 #ifndef DEF_LINK
+
 #include "Link.h"
+
 #endif
 
 #ifndef DEF_LINKEDLIST
@@ -23,8 +22,14 @@ List addHead(List l, int value);
 
 List removeHead(List l);
 
+List removeValue(List l, int value);
+
 List newList();
 
+bool contains(List l, int x);
+
 void printList(List l);
+
+int getCount(List l);
 
 #endif

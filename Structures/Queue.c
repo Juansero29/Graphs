@@ -1,17 +1,20 @@
 #include "Queue.h"
 
-Queue newQueue(void) {
+Queue newQueue(void)
+{
     Queue q;
     q.head = NULL;
     q.tail = NULL;
     return q;
 }
 
-bool isQueueEmpty(Queue q) {
+bool isQueueEmpty(Queue q)
+{
     return (bool) (q.head == NULL && q.tail == NULL);
 }
 
-int queueLength(Queue q) {
+int queueLength(Queue q)
+{
     int count = 0;
     Link *l;
     l = q.head;
@@ -22,7 +25,8 @@ int queueLength(Queue q) {
     return count;
 }
 
-Queue addToQueue(Queue q, int value) {
+Queue addToQueue(Queue q, int value)
+{
 
     // We create a link to be added to the queue.
     Link *l;
@@ -55,7 +59,8 @@ Queue addToQueue(Queue q, int value) {
 }
 
 
-Queue removeQueueHead(Queue q) {
+Queue removeQueueHead(Queue q)
+{
 
     // If the queue is empty, it has no sense to delete anything at all...
 
@@ -82,12 +87,17 @@ Queue removeQueueHead(Queue q) {
     return q;
 }
 
-int getHeadValue(Queue q){
-    if(isQueueEmpty(q)){printf("ERROR: Can't get the head of an empty queue! EXITING. "); exit(1);}
+int getHeadValue(Queue q)
+{
+    if (isQueueEmpty(q)) {
+        printf("ERROR: Can't get the head of an empty queue! EXITING. ");
+        exit(1);
+    }
     return (q.head)->value;
 }
 
-void printQueue(Queue q) {
+void printQueue(Queue q)
+{
     Link *current;
     current = q.head;
     while (current != NULL) {

@@ -1,28 +1,61 @@
+#include <stdbool.h>
+#include "Link.h"
 
 #ifndef DEF_GRAPH
 #define DEF_GRAPH
 
-#include "Bool.h"
-#include "Link.h"
 
-typedef struct maillong{
+typedef struct gLink
+{
     int v;
-    Liste l;
-    maillong *suiv;
-} Maillong, *Graphe;
+    List l;
+    struct gLink *next;
+} GLink, *Graph;
 
-Graphe graphenouv();
-void afficher();
-Graphe adjs(Graphe g, int x);
-Graphe adjst(Graphe g, int x);
-Graphe sups(Graphe g, int x);
-Graphe supa(Graphe g, int x, int y);
-bool exs(Graphe g, int x);
-bool exa(Graphe g, int x, int y);
-Liste esuc(Graphe g, int x);
-Liste esg(Graphe g);
-int de(Graphe g);
-int di(Graphe g);
+
+// Initializes a new graph
+Graph newGraph(); // graphnouv
+
+// Returns whether a graph 'g' is empty or not.
+bool isEmpty(Graph g); //vide
+
+// Adds a head node to a graph
+Graph addHeadNode(Graph g, int x); //adjTeteSommet
+
+// Adds a node to a graph, we suppose the node doesn't exist already in the graph
+Graph addNode(Graph g, int x); //adjsommet
+
+// Adds an arc to a graph that link values 'x' and 'y'
+Graph addArc(Graph g, int x, int y); //adja
+
+// Deletes the head node from the graph g
+Graph deleteHeadNode(Graph g); //spst
+
+// Deletes a node from the graph g containing value 'x'
+Graph deleteNode(Graph g, int x); //sups
+
+// Deletes an arc from the graph g linking values 'x' and 'y'
+Graph deleteArc(Graph g, int x, int y); //supa
+
+// Returns whether a node with this value exists or not
+bool doesNodeExist(Graph g, int x); //exs
+
+// Returns whether an arc linking values 'x' and 'y' exists or not
+bool doesArcExist(Graph g, int x, int y);//exa
+
+// Returns the set of successors of the node containing value 'x'.
+List getSuccessors(Graph g, int x); //esuc
+
+// Returns the set of nodes of the graph
+List esg(Graph g); //ess
+
+// Returns number of successors.
+int getNumberOfSuccesors(Graph g, int x); //di (degrée interieur)
+
+int getNumberOfPredecessors(Graph g, int x); //de (degrée exterieur)
+
+void printGraph(); //afficher
+
 
 #endif //DEF_GRAPH
 

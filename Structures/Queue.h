@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #ifndef DEF_LINK
-#include "Link.h"
-#endif
 
-#ifndef DEF_BOOL
-#include "bool.h"
+#include "Link.h"
+
 #endif
 
 #ifndef DEF_QUEUE
 #define DEF_QUEUE
-typedef struct {
+typedef struct
+{
     Link *head;
     Link *tail;
 } Queue;
