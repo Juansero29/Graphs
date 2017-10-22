@@ -47,14 +47,14 @@ bool doesArcExist(Graph g, int x, int y);//exa
 List getSuccessors(Graph g, int x); //esuc
 
 // Returns the set of nodes of the graph
-List esg(Graph g); //ess
+List getNodes(Graph g); //ess
 
 // Returns number of successors.
 int getNumberOfSuccesors(Graph g, int x); //di (degrée interieur)
 
 int getNumberOfPredecessors(Graph g, int x); //de (degrée exterieur)
 
-void printGraph(); //afficher
+void printGraph(Graph g); //afficher
 
 
 #endif //DEF_GRAPH

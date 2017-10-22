@@ -25,7 +25,7 @@ Queue addToQueue(Queue q, int value);
 
 Queue removeQueueHead(Queue q);
 
-int getHeadValue(Queue q);
+int getQueueHeadValue(Queue q);
 
 int queueLength(Queue q);
 

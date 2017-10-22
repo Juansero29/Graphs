@@ -101,3 +101,25 @@ int getCount(List l)
     }
     return count;
 }
+
+List copy(List l)
+{
+    if(isListEmpty(l))
+    {
+        return newList();
+    }
+
+    List copy;
+    copy = l;
+    return copy;
+}
+
+int getListHeadValue(List l)
+{
+    if(isListEmpty(l))
+    {
+        printf("ERROR: Can't get the head value of an empty list! EXITING. ");
+        exit(1);
+    }
+    return l->value;
+}

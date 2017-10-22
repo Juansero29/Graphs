@@ -87,10 +87,10 @@ Queue removeQueueHead(Queue q)
     return q;
 }
 
-int getHeadValue(Queue q)
+int getQueueHeadValue(Queue q)
 {
     if (isQueueEmpty(q)) {
-        printf("ERROR: Can't get the head of an empty queue! EXITING. ");
+        printf("ERROR: Can't get the head value of an empty queue! EXITING. ");
         exit(1);
     }
     return (q.head)->value;

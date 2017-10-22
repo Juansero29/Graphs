@@ -32,4 +32,8 @@ void printList(List l);
 
 int getCount(List l);
 
+List copy(List l);
+
+int getListHeadValue(List l);
+
 #endif

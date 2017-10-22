@@ -6,7 +6,9 @@ Graph newGraph()
 
     Graph g;
     g->l = newList();
+    g->v = NULL;
     g->next = NULL;
+    g = NULL;
     return g;
 }
 
@@ -62,7 +64,7 @@ Graph addArc(Graph g, int x, int y)
     }
 
     aux->l = addHead(aux->l, y);
-    return aux;
+    return g;
 }
 
 Graph deleteHeadNode(Graph g)
@@ -158,12 +160,12 @@ List getSuccessors(Graph g, int x)
     return g->l;
 }//esuc
 
-// Returns the set of nodes of the graph
-List esg(Graph g)
+// Returns the set of values of the nodes of the graph
+List getNodes(Graph g)
 {
     List l;
     l = newList();
-    while(!isEmpty(g))
+    while (!isEmpty(g))
     {
         l = addHead(l, g->v);
         g = g->next;
@@ -175,9 +177,9 @@ List esg(Graph g)
 int getNumberOfSuccesors(Graph g, int x)
 {
     int i = 0;
-    while(!isEmpty(g))
+    while (!isEmpty(g))
     {
-        if(contains(g->l, x))
+        if (contains(g->l, x))
         {
             i++;
         }
@@ -189,12 +191,12 @@ int getNumberOfSuccesors(Graph g, int x)
 // Returns number of predecessors
 int getNumberOfPredecessors(Graph g, int x)
 {
-    if(!doesNodeExist(g, x))
+    if (!doesNodeExist(g, x))
     {
         return 0;
     }
 
-    while(g->v != x)
+    while (g->v != x)
     {
         g = g->next;
     }
@@ -202,7 +204,39 @@ int getNumberOfPredecessors(Graph g, int x)
     return getCount(g->l);
 } //de (degrée exterieur)
 
-void printGraph()
+void printGraph(Graph g)
 {
+    FILE *f;
+    Graph aux;
+    aux = g;
+    f = fopen("../graph.txt", "w");
+    if (f == NULL)
+    {
+        printf("Probleme when opening file 'graph.txt'. Does the file exist inside the Graphs folder? Path should be: Graphs/graph.txt. EXITING. \n");
+        exit(1);
+    }
+    fprintf(f, "digraph family\n{\n");
+
+    while(!isEmpty(g))
+    {
+        fprintf(f, "%d[label = \"Node%d\"]\n", g->v, g->v);
+        g = g->next;
+    }
+
+    int y = 0;
+    while(!isEmpty(aux))
+    {
+        List l1 = copy(aux->l);
+        while(!isListEmpty(l1))
+        {
+            y = getListHeadValue(l1);
+            l1 = removeHead(l1);
+            fprintf(f, "%d->%d\n", aux->v, y);
+        }
+        aux = aux->next;
+    }
+    fprintf(f, "}\n");
+    fclose(f);
+    system("dotty graph.txt");
 } //afficher
 
