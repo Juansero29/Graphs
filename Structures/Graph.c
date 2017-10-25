@@ -242,7 +242,7 @@ void printGraph(Graph g)
 
 List depthFirstSearch(Graph g, List e, List l)
 {
-    List l1;
+    List l1 = newList();
     int z;
 
     if(isListEmpty(e)) { return l;}
@@ -251,9 +251,19 @@ List depthFirstSearch(Graph g, List e, List l)
 
     if(contains(l, z)) { l1 = l; }
 
-    else { l1 = depthFirstSearch(g, getSuccessors(l, z), addHead(l, z));}
+    else { l1 = depthFirstSearch(g, getSuccessors(g, z), addHead(l, z));}
 
     return depthFirstSearch(g, removeValue(l, z), l1);
+}
+
+bool path(Graph g, int x, int y)
+{
+    List l, l1;
+
+    l1 = newList();
+    l1 = addHead(l, x);
+    l = depthFirstSearch(g, l1, newList());
+    return contains(l, y);
 }
 //afficher
 

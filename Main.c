@@ -1,4 +1,5 @@
 #include "Structures/Graph.h"
+#include <stdio.h>
 
 int main(void)
 {
@@ -15,7 +16,10 @@ int main(void)
     g = addArc(g, 4, 5);
     g = addArc(g, 3, 4);
 
-    //List depth = depthFirstSearch(g, getNodes(g), getSuccessors(g, ));
+    bool b;
+
+    b = path(g, 3, 5);
+    if(b){ printf("There's a path between 3 and 5");} else { printf("There's no path between 3 and 5");}
 
     printGraph(g);
 }

@@ -58,6 +58,10 @@ void printGraph(Graph g); //afficher
 
 List depthFirstSearch(Graph g, List e, List l); //parcours en profondeur
 
+bool path(Graph g, int x, int y); //chemin, tells if there's a path between values x, y
+
+
+
 
 
 

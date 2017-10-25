@@ -65,6 +65,10 @@ List removeValue(List l, int value)
 {
     if (isListEmpty(l))
     { return l; }
+
+    if (!contains(l, value))
+    { return l; }
+
     Link *m;
     m = l;
     while (m->value != value)
