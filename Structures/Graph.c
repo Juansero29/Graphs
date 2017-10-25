@@ -238,5 +238,22 @@ void printGraph(Graph g)
     fprintf(f, "}\n");
     fclose(f);
     system("dotty graph.txt");
-} //afficher
+}
+
+List depthFirstSearch(Graph g, List e, List l)
+{
+    List l1;
+    int z;
+
+    if(isListEmpty(e)) { return l;}
+
+    z = getListHeadValue(e);
+
+    if(contains(l, z)) { l1 = l; }
+
+    else { l1 = depthFirstSearch(g, getSuccessors(l, z), addHead(l, z));}
+
+    return depthFirstSearch(g, removeValue(l, z), l1);
+}
+//afficher
 

@@ -15,5 +15,7 @@ int main(void)
     g = addArc(g, 4, 5);
     g = addArc(g, 3, 4);
 
+    //List depth = depthFirstSearch(g, getNodes(g), getSuccessors(g, ));
+
     printGraph(g);
 }

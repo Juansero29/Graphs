@@ -56,6 +56,10 @@ int getNumberOfPredecessors(Graph g, int x); //de (degrée exterieur)
 
 void printGraph(Graph g); //afficher
 
+List depthFirstSearch(Graph g, List e, List l); //parcours en profondeur
+
+
+
 
 #endif //DEF_GRAPH
 
